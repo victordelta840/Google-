@@ -1,0 +1,48 @@
+{
+  "name": "astra-securedrive",
+  "productName": "ASTRA SecureDrive",
+  "version": "1.0.0",
+  "description": "Portable secure pendrive executable with voice biometrics, password fallback, 3D holographic globe, and encrypted container storage.",
+  "author": "Victor Sir <security@astradrive.local>",
+  "main": "dist-electron/main.cjs",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx server.ts",
+    "build": "vite build && esbuild server.ts --platform=node --format=esm --outfile=server.js --bundle --packages=external",
+    "build:electron": "esbuild electron/main.ts --platform=node --format=cjs --outfile=dist-electron/main.cjs --bundle --packages=external && esbuild electron/preload.ts --platform=node --format=cjs --outfile=dist-electron/preload.cjs --bundle --packages=external",
+    "build:all": "vite build && npm run build:electron && esbuild server.ts --platform=node --format=esm --outfile=server.js --bundle --packages=external",
+    "pack": "npm run build:all && electron-builder --dir",
+    "dist:win": "npm run build:all && electron-builder --win portable",
+    "start": "node server.js",
+    "preview": "vite preview",
+    "clean": "rm -rf dist dist-electron release server.js",
+    "lint": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@google/genai": "^2.4.0",
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/three": "^0.186.0",
+    "@vitejs/plugin-react": "^6.1.1",
+    "dotenv": "^17.2.3",
+    "express": "^4.21.2",
+    "lucide-react": "^0.546.0",
+    "motion": "^12.23.24",
+    "react": "^19.0.1",
+    "react-dom": "^19.0.1",
+    "three": "^0.186.1",
+    "vite": "^8.3.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.14.0",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "autoprefixer": "^10.4.21",
+    "electron": "^44.7.2",
+    "electron-builder": "^26.15.3",
+    "esbuild": "^0.25.0",
+    "tailwindcss": "^4.3.3",
+    "tsx": "^4.21.0",
+    "typescript": "^7.0.2"
+  }
+}

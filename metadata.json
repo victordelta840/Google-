@@ -1,0 +1,6 @@
+{
+  "name": "ASTRA SecureDrive",
+  "description": "Cross-Platform Secure USB Storage System with cinematic interface, cryptographic container engine, voice & password authentication, and session locking.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

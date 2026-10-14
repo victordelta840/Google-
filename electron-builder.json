@@ -1,0 +1,38 @@
+{
+  "appId": "com.astrasecuredrive.app",
+  "productName": "ASTRA SecureDrive",
+  "directories": {
+    "output": "release"
+  },
+  "files": [
+    "dist/**/*",
+    "dist-electron/**/*",
+    "public/audio/**/*"
+  ],
+  "extraResources": [
+    {
+      "from": "public/audio",
+      "to": "audio",
+      "filter": ["**/*"]
+    }
+  ],
+  "asar": true,
+  "asarUnpack": [
+    "**/public/audio/**/*"
+  ],
+  "win": {
+    "target": [
+      {
+        "target": "portable",
+        "arch": [
+          "x64"
+        ]
+      }
+    ],
+    "icon": "public/favicon.ico"
+  },
+  "portable": {
+    "artifactName": "ASTRA-SecureDrive-Portable-${version}.exe",
+    "unpackDirName": "astra_securedrive"
+  }
+}
